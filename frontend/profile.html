@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Create Your Profile</h2>
+    <form id="signup-form">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="text" id="fullName" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="url" id="avatar" placeholder="Avatar Image URL (optional)" />
+      <textarea id="bio" placeholder="Short Bio" rows="4"></textarea>
+      <button type="submit">Create Profile</button>
+    </form>
+  </div>
+
+
+  <script>
+    document.getElementById("signup-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const user = {
+        username: document.getElementById("username").value.trim(),
+        fullName: document.getElementById("fullName").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        avatar: document.getElementById("avatar").value.trim() || "https://via.placeholder.com/120",
+        bio: document.getElementById("bio").value.trim()
+      };
+      
+      localStorage.setItem("user", JSON.stringify(user));
+
+      window.location.href = "profile.html";
+    });
+  </script>
+
+</body>
+</html>
